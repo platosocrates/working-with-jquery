@@ -1,0 +1,82 @@
+repo: ''
+canvasCourse: ''
+
+naming: true
+restrictFileTypes: true
+liveWebsite: true
+
+git:
+  numCommits: 2
+  allCommitted: true
+  allSynced: true
+
+html:
+  - path: 'index.html'
+    valid: true
+    bestPractices: true
+    outline: true
+    performance: true
+    has:
+      - ['link[href*="Merriweather"]', 'The Google Font, `Merriweather` (regular, italic & bold) is missing']
+      - ''
+    hasNot:
+      - ''
+    search:
+      - ''
+    searchNot:
+      - ''
+
+css:
+  - path: 'css/main.css'
+    valid: true
+    bestPractices: true
+    has:
+      - ['html', 'box-sizing', 'border-box', 'The `border-box` layout model is needed for this assignment—use the `borderbox` snippet']
+      - ['html', 'text-size-adjust', '100%']
+      - ['html', '-moz-text-size-adjust', '100%']
+      - ['html', '-ms-text-size-adjust', '100%']
+      - ['html', '-webkit-text-size-adjust', '100%']
+      - ['*', 'box-sizing', 'inherit', 'The `border-box` layout model is needed for this assignment—use the `borderbox` snippet']
+      - ['@25em']
+      - ['@38em', 'html', 'font-size', '110%']
+      - ['@38em', 'html', 'line-height', '1.4']
+      - ['@60em', 'html', 'font-size', '120%']
+      - ['@60em', 'html', 'line-height', '1.5']
+      - ['@90em', 'html', 'font-size', '130%']
+    hasNot:
+      - []
+    search:
+      - '@-moz-viewport'
+      - '@-ms-viewport'
+      - '@-o-viewport'
+      - '@-webkit-viewport'
+      - '@viewport'
+    searchNot:
+      - ['@media.+\(.*max-width', 'Media queries with `max-width` should not be used — use `min-width` instead']
+      - ['@media.+\(.*px', 'Pixel units should not be used in media queries — use `em` instead']
+      - ['font-size\s*:\s*.+px', 'Pixel units should not be used for `font-size` — use `rem` instead']
+
+js:
+  - path: 'js/main.js'
+    valid: true
+    bestPractices: true
+    search:
+      - ''
+    searchNot:
+      - ''
+
+screenshots:
+  - path: 'index.html'
+    sizes: [320, 400, 608, 960, 1440]
+
+functionality:
+  - path: 'index.html'
+    tests:
+      - |
+        let link = $('nav a');
+        let oldBg = css(link).backgroundColor;
+
+        hover('nav a', function () {
+          if (css(link).backgroundColor == oldBg) fail('The background colour of the navigation links don’t change when hovered')
+          pass();
+        });
